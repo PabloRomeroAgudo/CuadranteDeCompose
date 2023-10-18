@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -18,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,101 +51,50 @@ fun CuadranteEntero(modifier: Modifier = Modifier) {
             modifier = modifier.weight(1f)
         )
          {
-            CuadranteUno(modifier.weight(1f).fillMaxHeight())
-            CuadranteDos(modifier.weight(1f).fillMaxHeight())
+            Cuadrante(stringResource(R.string.title1), stringResource(R.string.parrafo1), 0xFFEADDFF,
+                modifier
+                    .weight(1f)
+                    .fillMaxHeight())
+            Cuadrante(
+                stringResource(R.string.title2), stringResource(R.string.parrafo2), 0xFFD0BCFF,
+                modifier
+                    .weight(1f)
+                    .fillMaxHeight())
         }
         Row(
             modifier = modifier.weight(1f)
         ) {
-            CuadranteTres(modifier.weight(1f).fillMaxHeight())
-            CuadranteCuatro(modifier.weight(1f).fillMaxHeight())
+            Cuadrante(
+                stringResource(R.string.title3), stringResource(R.string.parrafo3),0xFFB69DF8,
+                modifier
+                    .weight(1f)
+                    .fillMaxHeight())
+            Cuadrante(
+                stringResource(R.string.title4), stringResource(R.string.parrafo4), 0xFFF6EDFF,
+                modifier
+                    .weight(1f)
+                    .fillMaxHeight())
         }
     }
 }
 
 @Composable
-fun CuadranteUno(modifier: Modifier = Modifier) {
+fun Cuadrante(title: String, parrafo: String, color: Long, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
-            .background(Color(0xFFEADDFF))
+            .background(Color(color))
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     )
     {
         Text(
-            text = "Text composable",
+            text = title,
             modifier = Modifier.padding(bottom = 16.dp),
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = "Displays text and follows the recommended Material Design guidelines.",
-            textAlign = TextAlign.Justify
-        )
-    }
-}
-
-@Composable
-fun CuadranteDos(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .background(Color(0xFFD0BCFF))
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    )
-    {
-        Text(
-            text = "Image composable",
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = "Creates a composable that lays out and draws a given Painter class object.",
-            textAlign = TextAlign.Justify
-        )
-    }
-}
-
-@Composable
-fun CuadranteTres(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .background(Color(0xFFB69DF8))
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    )
-    {
-        Text(
-            text = "Row composable",
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = "A layout composable that places its children in a horizontal sequence.",
-            textAlign = TextAlign.Justify
-        )
-    }
-}
-
-@Composable
-fun CuadranteCuatro(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .background(Color(0xFFF6EDFF))
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    )
-    {
-        Text(
-            text = "Column composable",
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = "A layout composable that places its children in a vertical sequence.",
+            text = parrafo,
             textAlign = TextAlign.Justify
         )
     }
